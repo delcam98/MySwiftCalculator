@@ -7,17 +7,29 @@
 
 import Foundation
 
+//This is the welcome message
 print("Welcome to MySwiftCalculator")
 var choice:String;
+
+/**
+    We use a repeat-while to keep looping until user input an value different of "y"
+ */
 repeat{
     
+    //This is the message prompt to console
     print("Enter first number: ", terminator: "")
+    
+    //Getting the first number as optional or nil
     let firstNum:Double? = Double(readLine()!) ?? nil;
     
+    //This is the message prompt to console
     print("Enter second number: ", terminator: "")
+    
+    //Getting the second number as optional or nil
     let secondNum:Double? = Double(readLine()!) ?? nil;
     
     print("Validating numbers...")
+    //Validating numbers or show an error message
     if !validateNumbers(num1:firstNum, num2:secondNum){
         print("Invalid numbers")
     }else{
@@ -33,15 +45,18 @@ repeat{
         
     }
     
+    //This is the message prompt to console
     print("Do you want to continue? (y): ", terminator: "")
+    //Getting the response from user to continue
     choice = readLine() ?? "";
     
 }while choice.lowercased() == "y";
 
     
-
-
-
+/**
+    This function is used to do the calculation based on the num and operation input by the user.
+    Show an error message for invalid operation and division by zero.
+ */
 func calculate(num1:Double, num2:Double, operation:String)->Double?{
     var result:Double?=nil;
     switch(operation){
@@ -70,7 +85,9 @@ func calculate(num1:Double, num2:Double, operation:String)->Double?{
     
     return result;
 }
-
+/**
+    This functionality is used to ensure that the user input is a valid number.
+ */
 func validateNumbers(num1:Double?, num2:Double?) -> Bool{
     return num1 != nil && num2 != nil
 }
